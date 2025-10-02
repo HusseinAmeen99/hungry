@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungr/core/constants/app_colors.dart';
-
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,9 +13,9 @@ body: Column(
   //crossAxisAlignment: CrossAxisAlignment.center,
   children: [
     Gap(90),
-    Center(child:
+    Center(child: SvgPicture.asset('assets/splash/images/svg/Hungry_.svg'),),
     Gap(90),
-    Image.asset('assets/images/burger.png'),
+    Image.asset('assets/splash/images/burger.png'),
   ],
 ),
     );
