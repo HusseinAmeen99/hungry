@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
-  const CustomText({super.key, required this.text,this.fontsize,this.textcolor,this.weight});
+   CustomText({super.key, required this.text,this.fontsize,this.textcolor,this.weight});
 final String text;
 final double? fontsize;
 final Color? textcolor;
