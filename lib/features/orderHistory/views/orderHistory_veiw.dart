@@ -6,7 +6,12 @@ class OrderhistoryVeiw extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(child: Text('Order History Page'))
+        ],
+      ),
     );
   }
 }

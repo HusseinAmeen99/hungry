@@ -34,17 +34,42 @@ class _RootState extends State<Root> {
     return Scaffold(
       body: PageView(
         controller: controoler,
-        children: [
-        ],
+        onPageChanged:(index){
+        setState(() {
+        currentScreen=index;
+        });
+        },
+        children: screens,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColors.primaryColor,
-          items: [
-          BottomNavigationBarItem(icon: Icon(CupertinoIcons.home)),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.home)),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.home)),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.home)),
-          ]),
+      bottomNavigationBar: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: AppColors.primaryColor,
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))
+        ),
+        child: BottomNavigationBar(
+          iconSize: 35,
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.grey.shade700,
+        currentIndex: currentScreen,
+            onTap:(index){
+              setState(() {
+                currentScreen=index;
+              });
+              controoler.jumpToPage(currentScreen);
+            },
+
+            items: [
+            BottomNavigationBarItem(icon: Icon(CupertinoIcons.home),label: 'Home'),
+              BottomNavigationBarItem(icon: Icon(CupertinoIcons.cart),label: 'Cart'),
+              BottomNavigationBarItem(icon: Icon(Icons.local_restaurant_sharp),label: 'Order History'),
+              BottomNavigationBarItem(icon: Icon(CupertinoIcons.profile_circled),label: 'Profile'),
+            ]),
+      ),
     );
   }
 }
