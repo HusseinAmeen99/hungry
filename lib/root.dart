@@ -33,6 +33,7 @@ class _RootState extends State<Root> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        physics: NeverScrollableScrollPhysics(),
         controller: controoler,
         onPageChanged:(index){
         setState(() {
@@ -48,27 +49,34 @@ class _RootState extends State<Root> {
           color: AppColors.primaryColor,
               borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))
         ),
-        child: BottomNavigationBar(
-          iconSize: 35,
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-            type: BottomNavigationBarType.fixed,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.grey.shade700,
-        currentIndex: currentScreen,
-            onTap:(index){
-              setState(() {
-                currentScreen=index;
-              });
-              controoler.jumpToPage(currentScreen);
-            },
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+          ),
+          child: BottomNavigationBar(
+            iconSize: 35,
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+              type: BottomNavigationBarType.fixed,
+              selectedItemColor: Colors.white,
+              unselectedItemColor: Colors.grey.shade700,
 
-            items: [
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.home),label: 'Home'),
-              BottomNavigationBarItem(icon: Icon(CupertinoIcons.cart),label: 'Cart'),
-              BottomNavigationBarItem(icon: Icon(Icons.local_restaurant_sharp),label: 'Order History'),
-              BottomNavigationBarItem(icon: Icon(CupertinoIcons.profile_circled),label: 'Profile'),
-            ]),
+          currentIndex: currentScreen,
+              onTap:(index){
+                setState(() {
+                  currentScreen=index;
+                });
+                controoler.jumpToPage(currentScreen);
+              },
+              items: [
+              BottomNavigationBarItem(icon: Icon(CupertinoIcons.home),label: 'Home'),
+                BottomNavigationBarItem(icon: Icon(CupertinoIcons.cart),label: 'Cart'),
+                BottomNavigationBarItem(icon: Icon(Icons.local_restaurant_sharp),label: 'Order History'),
+                BottomNavigationBarItem(icon: Icon(CupertinoIcons.profile_circled),label: 'Profile'),
+              ]),
+        ),
       ),
     );
   }

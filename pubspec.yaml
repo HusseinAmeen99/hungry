@@ -66,6 +66,8 @@ flutter:
     - assets/splash/images/
     - assets/splash/images/svg/
     - assets/login_view/
+    - assets/homeView/
+    - assets/test/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
