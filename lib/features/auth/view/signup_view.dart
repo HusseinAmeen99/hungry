@@ -11,6 +11,10 @@ class SignupView extends StatelessWidget {
   @override
   final GlobalKey<FormState> formkey=GlobalKey();
   Widget build(BuildContext context) {
+    TextEditingController namecontroller=TextEditingController();
+    TextEditingController emailcontroller=TextEditingController();
+    TextEditingController deliverycontroller=TextEditingController();
+    TextEditingController passwordcontroller=TextEditingController();
     return GestureDetector(
       //this to un focus the the cursor if there is a keyboard in the screen
       onTap: ()=> FocusScope.of(context).unfocus(),
@@ -30,13 +34,13 @@ class SignupView extends StatelessWidget {
                               width: 250,
                               child: SvgPicture.asset('assets/splash/images/svg/Hungry_.svg',width: 132,) ),
                           Gap(50),
-                          CustomTextformfield(hint: 'Name', isPassword: false),
+                          CustomTextformfield(hint: 'Name', isPassword: false, controller: namecontroller,),
                           Gap(40),
-                          CustomTextformfield(hint: 'Email Address', isPassword: false),
+                          CustomTextformfield(hint: 'Email Address', isPassword: false,controller: emailcontroller,),
                           Gap(40),
-                          CustomTextformfield(hint: 'Delivery address', isPassword: false),
+                          CustomTextformfield(hint: 'Delivery address', isPassword: false,controller: deliverycontroller,),
                           Gap(40),
-                          CustomTextformfield(hint: 'Password', isPassword: true),
+                          CustomTextformfield(hint: 'Password', isPassword: true,controller: passwordcontroller,),
                           Gap(30),
                           Image.asset('assets/login_view/Line 15 (1).png',color: Colors.white,width: 300,),
                           Gap(20),

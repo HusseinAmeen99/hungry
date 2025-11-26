@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungr/core/constants/app_colors.dart';
+import 'package:hungr/features/home/widget/card_home_view_items.dart';
 import 'package:hungr/features/home/widget/card_item.dart';
 
 import '../../../shared/custom_text.dart';
@@ -21,7 +22,18 @@ class _HomeViewState extends State<HomeView> {
     'Sliders',
     'Classic',
   ];
-  int selectedIndex=1;
+  List<CardHomeViewItems> CardHomeView=[
+    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger1.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
+    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger3.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
+    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger1.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
+    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger4.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
+    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger1.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
+    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger3.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
+    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger1.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
+    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger4.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
+
+  ];
+  int selectedIndex=0;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -102,12 +114,12 @@ onTap: ()=> FocusScope.of(context).unfocus(),
                   physics: NeverScrollableScrollPhysics(),
                   padding: EdgeInsets.zero,
                   shrinkWrap: true,
-                  itemCount: 6,
+                  itemCount: CardHomeView.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,childAspectRatio: 0.7,mainAxisSpacing: 2),
                     itemBuilder: (context, index) {
                       return CardItem(
-                          image: 'assets/test/test1.png', title: 'Cheeseburger', description: 'Wendy\'s Burger', rate: '4.9');
-                    },
+                            image: CardHomeView[index].image, title: CardHomeView[index].title, description: CardHomeView[index].description, rate: CardHomeView[index].rate);
+                      },
                 ),
             
               ],

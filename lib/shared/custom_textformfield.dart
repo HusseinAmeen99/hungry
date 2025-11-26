@@ -7,9 +7,11 @@ class CustomTextformfield extends StatefulWidget {
     super.key,
     required this.hint,
     required this.isPassword,
+     required this.controller,
   });
   final String hint;
   final bool isPassword;
+  final TextEditingController controller;
   @override
   State<CustomTextformfield> createState() => _CustomTextformfieldState();
 }
@@ -35,6 +37,7 @@ class _CustomTextformfieldState extends State<CustomTextformfield> {
         }
         null;
       },
+      controller: widget.controller,
       obscureText: obscuretext,
       cursorColor: AppColors.primaryColor,
       decoration: InputDecoration(
