@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hungr/features/auth/view/login_veiw.dart';
+import 'package:hungr/features/auth/view/signup_view.dart';
 import 'package:hungr/features/home/views/home_view.dart';
 import 'package:hungr/root.dart';
 import 'package:hungr/splash.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:LoginVeiw(),
+      home:Root(),
     );
   }
 }

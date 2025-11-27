@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungr/core/constants/app_colors.dart';
+import 'package:hungr/features/auth/view/login_veiw.dart';
+import 'package:hungr/features/auth/widgets/custom_btn.dart';
 import 'package:hungr/shared/custom_text.dart';
 import 'package:hungr/shared/custom_textformfield.dart';
 
@@ -13,8 +15,8 @@ class SignupView extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController namecontroller=TextEditingController();
     TextEditingController emailcontroller=TextEditingController();
-    TextEditingController deliverycontroller=TextEditingController();
     TextEditingController passwordcontroller=TextEditingController();
+    TextEditingController ConfirmPasswordcontroller=TextEditingController();
     return GestureDetector(
       //this to un focus the the cursor if there is a keyboard in the screen
       onTap: ()=> FocusScope.of(context).unfocus(),
@@ -38,30 +40,25 @@ class SignupView extends StatelessWidget {
                           Gap(40),
                           CustomTextformfield(hint: 'Email Address', isPassword: false,controller: emailcontroller,),
                           Gap(40),
-                          CustomTextformfield(hint: 'Delivery address', isPassword: false,controller: deliverycontroller,),
-                          Gap(40),
                           CustomTextformfield(hint: 'Password', isPassword: true,controller: passwordcontroller,),
+                          Gap(40),
+                          CustomTextformfield(hint: 'Confirm Password', isPassword: true,controller: ConfirmPasswordcontroller,),
                           Gap(30),
                           Image.asset('assets/login_view/Line 15 (1).png',color: Colors.white,width: 300,),
                           Gap(20),
-                          GestureDetector(
-                            onTap:(){
-                              if(formkey.currentState!.validate())
-                              {
-                                print('Login done');
-                              }
-                            } ,
-                            child: Container(
-                              width: double.infinity,
-                              height: 55,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Center(child: CustomText(text: 'Signup',weight: FontWeight.bold,fontsize: 18,textcolor: AppColors.primaryColor,)),
-                            ),
+                          ///Button Widget
+                          CustomBtn(btnText: 'Sing Up',onTap: (){formkey.currentState!.validate()? print('Login done'):print('Login failed');}),
+                          Gap(15),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              GestureDetector(
+                                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => LoginVeiw(),));},
+                                  child: CustomText(text: 'have an account?Login',textcolor: Colors.white54,)),
+                            ],
                           )
-                        ]),
+                        ]
+                          ),
                   )
               ),
             ),

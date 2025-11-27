@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungr/core/constants/app_colors.dart';
+import 'package:hungr/features/auth/view/signup_view.dart';
 import 'package:hungr/shared/custom_text.dart';
 import 'package:hungr/shared/custom_textformfield.dart';
+
+import '../widgets/custom_btn.dart';
 
 class LoginVeiw extends StatelessWidget {
    LoginVeiw({super.key});
@@ -43,24 +46,18 @@ class LoginVeiw extends StatelessWidget {
                     Gap(30),
                     Image.asset('assets/login_view/Line 15 (1).png',color: Colors.white,width: 300,),
                     Gap(20),
-                    GestureDetector(
-                      onTap: (){
-                        if(_formkey.currentState!.validate()){
-                          print('Login done');
-                        }
-                        else{
-                          print('Login failed');
-                        }
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        height: 55,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(child: CustomText(text: 'Login',weight: FontWeight.bold,fontsize: 18,textcolor: AppColors.primaryColor,)),
-                      ),
+                    ///Button Widget
+                    CustomBtn(btnText: 'Login',onTap: (){_formkey.currentState!.validate()? print('Login done'):print('Login failed');}),
+                    Gap(15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomText(text: 'Forgot Password?',textcolor: Colors.white54,),
+                        Gap(10),
+                        GestureDetector(
+                          onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => SignupView(),));},
+                            child: CustomText(text: 'Don\'t have an account?Register',textcolor: Colors.white54,)),
+                      ],
                     )
                   ]),
               )
