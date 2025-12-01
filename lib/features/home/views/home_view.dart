@@ -5,8 +5,12 @@ import 'package:gap/gap.dart';
 import 'package:hungr/core/constants/app_colors.dart';
 import 'package:hungr/features/home/widget/card_home_view_items.dart';
 import 'package:hungr/features/home/widget/card_item.dart';
+import 'package:hungr/features/home/widget/food_category.dart';
 
 import '../../../shared/custom_text.dart';
+import '../../product/views/product_details_view.dart';
+import '../widget/search_field.dart';
+import '../widget/user_header.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -16,116 +20,131 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  List category=[
-    'All',
-    'Combos',
-    'Sliders',
-    'Classic',
+  List<CardHomeViewItems> CardHomeView = [
+    CardHomeViewItems(
+      image: 'assets/homeView/gridViewImage/burger1.png',
+      title: 'Cheeseburger',
+      description: 'Wendy\'s Burger',
+      rate: '4.9',
+    ),
+    CardHomeViewItems(
+      image: 'assets/homeView/gridViewImage/burger3.png',
+      title: 'Cheeseburger',
+      description: 'Wendy\'s Burger',
+      rate: '4.9',
+    ),
+    CardHomeViewItems(
+      image: 'assets/homeView/gridViewImage/burger1.png',
+      title: 'Cheeseburger',
+      description: 'Wendy\'s Burger',
+      rate: '4.9',
+    ),
+    CardHomeViewItems(
+      image: 'assets/homeView/gridViewImage/burger4.png',
+      title: 'Cheeseburger',
+      description: 'Wendy\'s Burger',
+      rate: '4.9',
+    ),
+    CardHomeViewItems(
+      image: 'assets/homeView/gridViewImage/burger1.png',
+      title: 'Cheeseburger',
+      description: 'Wendy\'s Burger',
+      rate: '4.9',
+    ),
+    CardHomeViewItems(
+      image: 'assets/homeView/gridViewImage/burger3.png',
+      title: 'Cheeseburger',
+      description: 'Wendy\'s Burger',
+      rate: '4.9',
+    ),
+    CardHomeViewItems(
+      image: 'assets/homeView/gridViewImage/burger1.png',
+      title: 'Cheeseburger',
+      description: 'Wendy\'s Burger',
+      rate: '4.9',
+    ),
+    CardHomeViewItems(
+      image: 'assets/homeView/gridViewImage/burger4.png',
+      title: 'Cheeseburger',
+      description: 'Wendy\'s Burger',
+      rate: '4.9',
+    ),
   ];
-  List<CardHomeViewItems> CardHomeView=[
-    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger1.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
-    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger3.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
-    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger1.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
-    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger4.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
-    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger1.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
-    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger3.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
-    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger1.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
-    CardHomeViewItems(image: 'assets/homeView/gridViewImage/burger4.png',title: 'Cheeseburger',description: 'Wendy\'s Burger',rate: '4.9'),
-
-  ];
-  int selectedIndex=0;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-onTap: ()=> FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Gap(50),
-                ///logo with user login image
-                Row(
+        body: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            ///Header
+            SliverAppBar(
+              pinned: true,
+              elevation: 0,
+              floating: false,
+              scrolledUnderElevation: 0,
+              backgroundColor: Colors.white,
+              toolbarHeight: 175,
+              automaticallyImplyLeading: false,
+              flexibleSpace: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20,vertical:10),
+                child: Column(
                   children: [
-                     Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SvgPicture.asset('assets/homeView/Hungry.svg',color: AppColors.primaryColor,height: 35,),
-                          Text('Hello, Rich Sonic'),
-                        ],
-                      ),
-                    Spacer(),
-                    CircleAvatar(radius: 35,),
+                    Gap(20),
+                    UserHeader(),
+                    Gap(10),
+                    SearchField(),
                   ],
                 ),
-                Gap(20),
-                ///search bar
-                Material(
-                  elevation: 5,
-                  borderRadius: BorderRadius.circular(15),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search',
-                      prefixIcon: Icon(CupertinoIcons.search),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide(
-                          color: Colors.grey.shade50,
-                        )
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(
-                            color: Colors.grey.shade50,
-                          )
-                      ),
-            
-                    ),
-                  ),
-                ),
-                Gap(20),
-                ///category
-                SingleChildScrollView(
-                  scrollDirection:Axis.horizontal,
-                  child: Row(
-                    children: List.generate(category.length,(index) {
-                      return  GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            selectedIndex==index;
-                          });
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(right: 9),
-                          padding: EdgeInsets.symmetric(horizontal: 27,vertical: 15),
-                          decoration: BoxDecoration(
-                            color: selectedIndex==index? AppColors.primaryColor : Colors.grey.shade200,
-                            borderRadius:BorderRadius.circular(20),
-                          ),
-                          child: CustomText(text: category[index],textcolor: selectedIndex==index? Colors.white :Colors.black,),
-                        ),
-                      );
-                    },),
-                  ),
-                ),
-                Gap(20),
-                GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  itemCount: CardHomeView.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,childAspectRatio: 0.7,mainAxisSpacing: 2),
-                    itemBuilder: (context, index) {
-                      return CardItem(
-                            image: CardHomeView[index].image, title: CardHomeView[index].title, description: CardHomeView[index].description, rate: CardHomeView[index].rate);
-                      },
-                ),
-            
-              ],
+              ),
+
             ),
-          ),
-        )
+            ///Search + Category
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                   //Gap(25),
+                    ///search bar
+                    //SearchField(),
+                    //Gap(20),
+
+                    ///category
+                    FoodCategory(),
+                    Gap(20),
+                    GridView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      itemCount: CardHomeView.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.7,
+                        mainAxisSpacing: 2,
+                      ),
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsView(),));
+                          },
+                          child: CardItem(
+                            image: CardHomeView[index].image,
+                            title: CardHomeView[index].title,
+                            description: CardHomeView[index].description,
+                            rate: CardHomeView[index].rate,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+          ],
+        ),
       ),
     );
   }
