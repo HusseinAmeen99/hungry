@@ -68,6 +68,7 @@ flutter:
     - assets/login_view/
     - assets/homeView/
     - assets/homeView/gridViewImage/
+    - assets/product_details_view/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
