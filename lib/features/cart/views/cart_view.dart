@@ -2,13 +2,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hungr/core/constants/app_colors.dart';
-import 'package:hungr/features/auth/widgets/custom_btn.dart';
+import 'package:hungr/shared/custom_text.dart';
+import 'cart_items.dart';
 
-import '../../../shared/custom_text.dart';
+class CartView extends StatefulWidget {
+  CartView({super.key});
 
-class CartView extends StatelessWidget {
-  const CartView({super.key});
+  @override
+  State<CartView> createState() => _CartViewState();
+}
 
+class _CartViewState extends State<CartView> {
+int number =1;
+List<int> quantities = [1, 1, 1, 1, 1, 1];
+// void onAdd(){
+//   setState(() {
+//     number++;
+//   });
+// }
+// void onMin(){
+//   setState(() {
+//     if(number>1)
+//       {number--;}
+//     else{
+//       return ;
+//     }
+//   });
+// }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,68 +37,70 @@ class CartView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Gap(40),
-            Card(
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 15.0,
-                  vertical: 10,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/homeView/gridViewImage/burger1.png',
-                          width: 100,
-                        ),
-                        Text(
-                          'Cheeseburger\nHussein Ameen',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              child: Icon(Icons.add, color: Colors.white),
-                              backgroundColor: AppColors.primaryColor,
-                            ),
-                            Gap(20),
-                            CustomText(
-                              text: '1',
-                              weight: FontWeight.bold,
-                              fontsize: 18,
-                            ),
-                            Gap(20),
-                            CircleAvatar(
-                              child: Icon(
-                                CupertinoIcons.minus,
-                                color: Colors.white,
-                              ),
-                              backgroundColor: AppColors.primaryColor,
-                            ),
-                          ],
-                        ),
-                        Gap(40),
-                        Container(
-                          width: 150,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: AppColors.primaryColor,
-                            borderRadius: BorderRadius.circular(20),
+            const Gap(40),
 
-                          ),
-                          child: Center(child: CustomText(text: 'Remove',textcolor: Colors.white,fontsize: 18,)),
-                        )                      ],
+            /// BEST PERFORMANCE ✓
+            Expanded(
+              child: ListView.builder(
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  return CartItems(
+                    image: 'assets/homeView/gridViewImage/burger1.png',
+                    title: '99 Grill',
+                    description: 'Hussein Ameen',
+                    number: quantities[index],
+                    onAdd: () {
+                      setState(() {
+                        quantities[index]++;
+                      });
+                    },
+                    onMin:() {
+                      setState(() {
+                        if (quantities[index] > 1) quantities[index]--;
+                      });
+                    },
+
+                  );
+                },
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:  [
+                      CustomText(
+                        text: 'Total',
+                        fontsize: 22,
+                        textcolor: Colors.grey,
+                      ),
+                      Gap(10),
+                      CustomText(
+                        text: '\$10.99',
+                        fontsize: 26,
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  Container(
+                    width: 150,
+                    height: 70,
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryColor,
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                  ],
-                ),
+                    child:  Center(
+                      child: CustomText(
+                        text: 'CheckOut',
+                        textcolor: Colors.white,
+                        fontsize: 18,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

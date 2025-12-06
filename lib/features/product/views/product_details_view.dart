@@ -41,7 +41,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
           child: Icon(
             Icons.arrow_back,
             color: Colors.black,
-            fontWeight: FontWeight.bold,
+           // fontWeight: FontWeight.bold,
             size: 30,
           ),
         ),
