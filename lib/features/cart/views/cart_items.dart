@@ -6,14 +6,14 @@ import '../../../core/constants/app_colors.dart';
 import '../../../shared/custom_text.dart';
 
 class CartItems extends StatelessWidget {
-  const CartItems({super.key, required this.title, required this.description, required this.image, this.onAdd, this.onMin, this.onRemove, required this.number});
+   CartItems({super.key, required this.title, required this.description, required this.image, this.onAdd, this.onMin, this.onRemove,this.number});
   final String title;
   final String description;
   final String image;
   final Function() ? onAdd;
   final Function() ? onMin;
   final Function() ? onRemove;
-  final int number;
+  int? number;
   @override
   Widget build(BuildContext context) {
     return Card(

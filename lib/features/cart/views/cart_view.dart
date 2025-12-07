@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hungr/core/constants/app_colors.dart';
+import 'package:hungr/features/chechout/views/checkout_veiw.dart';
 import 'package:hungr/shared/custom_text.dart';
 import 'cart_items.dart';
 
@@ -85,18 +86,21 @@ List<int> quantities = [1, 1, 1, 1, 1, 1];
                     ],
                   ),
                   const Spacer(),
-                  Container(
-                    width: 150,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child:  Center(
-                      child: CustomText(
-                        text: 'CheckOut',
-                        textcolor: Colors.white,
-                        fontsize: 18,
+                  GestureDetector(
+                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutVeiw(),));},
+                    child: Container(
+                      width: 160,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child:  Center(
+                        child: CustomText(
+                          text: 'CheckOut',
+                          textcolor: Colors.white,
+                          fontsize: 18,
+                        ),
                       ),
                     ),
                   ),
