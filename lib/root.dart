@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hungr/core/constants/app_colors.dart';
+import 'package:hungr/features/auth/view/profile_view.dart';
 import 'package:hungr/features/cart/views/cart_view.dart';
 import 'package:hungr/features/chechout/views/checkout_veiw.dart';
 import 'package:hungr/features/home/views/home_view.dart';
@@ -23,7 +24,7 @@ class _RootState extends State<Root> {
       HomeView(),
       CartView(),
       OrderhistoryVeiw(),
-      CheckoutVeiw()
+      ProfileView(),
     ];
     controoler = PageController(initialPage: currentScreen);
     super.initState();
