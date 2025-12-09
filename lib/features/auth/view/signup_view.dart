@@ -16,7 +16,6 @@ class SignupView extends StatelessWidget {
     TextEditingController namecontroller=TextEditingController();
     TextEditingController emailcontroller=TextEditingController();
     TextEditingController passwordcontroller=TextEditingController();
-    TextEditingController ConfirmPasswordcontroller=TextEditingController();
     return GestureDetector(
       //this to un focus the the cursor if there is a keyboard in the screen
       onTap: ()=> FocusScope.of(context).unfocus(),
@@ -42,8 +41,6 @@ class SignupView extends StatelessWidget {
                           Gap(40),
                           CustomTextformfield(hint: 'Password', isPassword: true,controller: passwordcontroller,),
                           Gap(40),
-                          CustomTextformfield(hint: 'Confirm Password', isPassword: true,controller: ConfirmPasswordcontroller,),
-                          Gap(30),
                           Image.asset('assets/login_view/Line 15 (1).png',color: Colors.white,width: 300,),
                           Gap(20),
                           ///Button Widget

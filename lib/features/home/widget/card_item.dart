@@ -16,7 +16,7 @@ final String image,title,description,rate;
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(image,width: 165,),
+            Center(child: Image.asset(image,width: 120,height: 120,)),
             CustomText(text: title),
             CustomText(text: description),
             Row(

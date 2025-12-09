@@ -121,7 +121,7 @@ class _HomeViewState extends State<HomeView> {
                       itemCount: CardHomeView.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 0.7,
+                        childAspectRatio: 0.75,
                         mainAxisSpacing: 2,
                       ),
                       itemBuilder: (context, index) {
