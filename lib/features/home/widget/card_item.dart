@@ -23,7 +23,7 @@ final String image,title,description,rate;
               children: [
                 CustomText(text: '⭐ $rate'),
                 Spacer(),
-                Icon(CupertinoIcons.heart_fill,color: AppColors.primaryColor,),
+                Icon(CupertinoIcons.heart,),
               ],
             ),
           ],

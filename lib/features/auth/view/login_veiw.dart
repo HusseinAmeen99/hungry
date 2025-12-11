@@ -6,6 +6,7 @@ import 'package:hungr/features/auth/view/signup_view.dart';
 import 'package:hungr/shared/custom_text.dart';
 import 'package:hungr/shared/custom_textformfield.dart';
 
+import '../../../root.dart';
 import '../widgets/custom_btn.dart';
 
 class LoginVeiw extends StatelessWidget {
@@ -58,8 +59,25 @@ class LoginVeiw extends StatelessWidget {
                           onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => SignupView(),));},
                             child: CustomText(text: 'Don\'t have an account?Register',textcolor: Colors.white54,)),
                       ],
-                    )
-                  ]),
+
+                    ),
+                    Gap(40),
+                    Center(
+                      child: GestureDetector(
+                        onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => Root(),)),
+                        child: Container(
+                          width: 200,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(child: CustomText(text: 'Continue as a Guest',fontsize: 18,)),
+                        ),
+                      ),
+                    ),
+                  ]
+                ),
               )
               ),
                 ),

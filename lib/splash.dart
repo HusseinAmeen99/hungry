@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungr/core/constants/app_colors.dart';
+import 'package:hungr/features/auth/view/login_veiw.dart';
 import 'package:hungr/root.dart';
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -44,7 +45,7 @@ class _SplashViewState extends State<SplashView>
       Duration(seconds: 3),
           () => Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Root()),
+        MaterialPageRoute(builder: (context) => LoginVeiw()),
       ),
     );
   }

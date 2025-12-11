@@ -30,6 +30,7 @@ final TextEditingController _addresscontroller=TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
         elevation: 0,
         actions: [
            Padding(

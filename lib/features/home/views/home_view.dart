@@ -106,11 +106,6 @@ class _HomeViewState extends State<HomeView> {
                 padding: const EdgeInsets.all(15.0),
                 child: Column(
                   children: [
-                   //Gap(25),
-                    ///search bar
-                    //SearchField(),
-                    //Gap(20),
-
                     ///category
                     FoodCategory(),
                     Gap(20),
