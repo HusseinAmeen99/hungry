@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungr/core/constants/app_colors.dart';
+import 'package:hungr/features/auth/data/auth_repo.dart';
 import 'package:hungr/features/auth/view/signup_view.dart';
 import 'package:hungr/shared/custom_text.dart';
 import 'package:hungr/shared/custom_textformfield.dart';
 
+import '../../../core/network/api_error.dart';
 import '../../../root.dart';
 import '../widgets/custom_btn.dart';
 
@@ -16,6 +18,25 @@ class LoginVeiw extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController emailcontroller=TextEditingController();
     TextEditingController passwordcontroller=TextEditingController();
+    AuthRepo authRepo=AuthRepo();
+    Future<void>login() async {
+      try {
+        final user = await authRepo.login(
+            emailcontroller.text.trim(), passwordcontroller.text.trim());
+        if (user != null) {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Root(),));
+        }
+      } catch (e) {
+        String errorMessage = 'unhandled error in login';
+        if (e is ApiError) {
+          errorMessage=e.message;
+        }
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(errorMessage)));
+      }
+    }
+
     final GlobalKey<FormState> _formkey=GlobalKey<FormState>();
     return GestureDetector(
       //this to un focus the the cursor if there is a keyboard in the screen
@@ -48,7 +69,7 @@ class LoginVeiw extends StatelessWidget {
                     Image.asset('assets/login_view/Line 15 (1).png',color: Colors.white,width: 300,),
                     Gap(20),
                     ///Button Widget
-                    CustomBtn(btnText: 'Login',onTap: (){_formkey.currentState!.validate()? print('Login done'):print('Login failed');}),
+                    CustomBtn(btnText: 'Login',onTap: login),
                     Gap(15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
