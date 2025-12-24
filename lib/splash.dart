@@ -37,10 +37,10 @@ class _SplashViewState extends State<SplashView>
       CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
     );
 
-    // Start animations
+    /// Start animations
     _controller.forward();
 
-    // Navigate after animation ends + delay
+    /// Navigate after animation ends + delay
     Future.delayed(
       Duration(seconds: 3),
           () => Navigator.pushReplacement(

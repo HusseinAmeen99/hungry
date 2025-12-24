@@ -15,7 +15,7 @@ class CustomBtn extends StatelessWidget {
         width: double.infinity,
         height: 55,
         decoration: BoxDecoration(
-          color: AppColors.primaryColor,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(25),
         ),
         child: Center(
@@ -23,7 +23,7 @@ class CustomBtn extends StatelessWidget {
             text: btnText,
             weight: FontWeight.bold,
             fontsize: 20,
-            textcolor: Colors.white,
+            textcolor: AppColors.primaryColor,
           ),
         ),
       ),

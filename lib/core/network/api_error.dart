@@ -5,7 +5,7 @@ class ApiError{
   ApiError({required this.message,this.statusCode});
 
  String toString(){
-    return 'ApiError(message: $message, statusCode: $statusCode)';
+    return ' $message';
 
   }
 

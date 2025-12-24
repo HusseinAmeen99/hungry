@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hungr/core/constants/app_colors.dart';
+import 'package:hungr/features/auth/view/login_veiw.dart';
 import 'package:hungr/features/auth/widgets/custom_textfiled.dart';
 
 import '../../../shared/custom_text.dart';
@@ -114,7 +115,9 @@ final TextEditingController _addresscontroller=TextEditingController();
                     border: Border.all(width: 3),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Center(child: CustomText(text: 'Log Out',fontsize: 18,textcolor: Colors.white,)),
+                  child: GestureDetector(onTap: (){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginVeiw(),));},
+                      child: Center(child: CustomText(text: 'Log Out',fontsize: 18,textcolor: Colors.white,))),
                 ),
               ],
             ),
